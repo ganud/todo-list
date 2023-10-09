@@ -1,0 +1,66 @@
+// https://www.realtimecolors.com/?colors=f4d7e2-200911-db769b-2c0c18-cb3a6f&fonts=Poppins-Poppins
+// https://res.cloudinary.com/imagist/image/fetch/f_auto/q_auto/c_scale,w_2624/https://todoist.com/static/home-teams/intro/desktop/background.en.jpg?_a=BATCtdJs0
+:root {
+    --text: #f4d7e2;
+    --background: #200911;
+    --primary: #db769b;
+    --secondary: #2c0c18;
+    --accent: #cb3a6f;
+}
+
+* {
+    margin: 0px;
+}
+
+html {
+    background: var(--background);
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 5% auto 5%;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: 
+    "header header"
+    "sidebar content"
+    "footer footer"
+    ;
+}
+
+.header {
+    grid-area: header;
+    color: var(--text);
+    display: flex;
+    border-bottom: 1px solid var(--accent);
+    padding: 0.5rem 7%;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5% 5%;
+    color:var(--text);
+    font-size: 1.5rem;
+    gap: 40px;
+
+    .menu-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.content {
+    grid-area: content;
+    background-color: var(--secondary);
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #221017;
+}
