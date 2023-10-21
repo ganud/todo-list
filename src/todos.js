@@ -21,8 +21,6 @@ export class TodoDisplayController {
         this.projectList.push(project);
     }
 
-    // Add projects to DOM
-    // Assign each an index and eventlistener
     renderProjects() {
         let projectGroup = document.getElementById('project-group');
         projectGroup.innerHTML = "";
@@ -34,7 +32,29 @@ export class TodoDisplayController {
             projectDOM.innerHTML = project.title;
             projectDOM.setAttribute('value', index);
 
-            projectDOM.addEventListener('click', project.renderTodos)
+            // Onclick function to make each project display their todos
+            projectDOM.addEventListener('click', function() {
+                console.log(project.title)
+
+                TodoDisplayController.clearTodos();
+                let titleElement = document.getElementsByClassName('title')[0];
+                titleElement.innerHTML = project.title;
+
+                project.todoList.forEach(todo => {
+                    let todoItem = document.createElement('div');
+                    todoItem.className = 'todo-item';
+        
+                    let todoName = document.createElement('p')
+                    todoName.innerHTML = todo.title;
+                    todoItem.appendChild(todoName);
+        
+                    let todoDate = document.createElement('p')
+                    todoDate.innerHTML = todo.dueDate;
+                    todoItem.appendChild(todoDate);
+        
+                    document.getElementsByClassName('todo-list')[0].appendChild(todoItem);
+                });
+            })
 
 
             projectGroup.appendChild(projectDOM);
@@ -55,29 +75,6 @@ export class Project {
         todo.dueDate = date;
 
         this.todoList.push(todo);
-    }
-
-
-    renderTodos() {
-        TodoDisplayController.clearTodos();
-        let titleElement = document.getElementsByClassName('title')[0];
-        titleElement.innerHTML = this.title;
-
-        // Creates and append individual todo
-        this.todoList.forEach(todo => {
-            let todoItem = document.createElement('div');
-            todoItem.className = 'todo-item';
-
-            let todoName = document.createElement('p')
-            todoName.innerHTML = todo.title;
-            todoItem.appendChild(todoName);
-
-            let todoDate = document.createElement('p')
-            todoDate.innerHTML = todo.dueDate;
-            todoItem.appendChild(todoDate);
-
-            document.getElementsByClassName('todo-list')[0].appendChild(todoItem);
-        });
     }
 }
 
