@@ -11,6 +11,7 @@ export class TodoItem {
 
 export class TodoDisplayController {
     projectList = [];
+    currentIndex = 0;
 
     static clearTodos() {
         document.getElementsByClassName('todo-list')[0].innerHTML = "";
@@ -34,9 +35,8 @@ export class TodoDisplayController {
 
             // Onclick function to make each project display their todos
             projectDOM.addEventListener('click', function() {
-                console.log(project.title)
-
                 TodoDisplayController.clearTodos();
+                this.currentIndex = index; // Updates the index to access the ProjectList when project is clicked.
                 let titleElement = document.getElementsByClassName('title')[0];
                 titleElement.innerHTML = project.title;
 

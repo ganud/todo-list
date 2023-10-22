@@ -20,19 +20,17 @@
             <div class="menu-item selected">Project1</div>
             <div class="menu-item">Project2</div>
         </div>
-        <dialog data-modal>
-            <div>This is a modal</div>
-            <form method="dialog">
-                <label for="project-form">AAAA</label>
-                <input type="text" id="project-form">
-                <button type="submit" formmethod="dialog">Cancel</button>
-                <button type="submit">Submit</button>
-            </form>
-        </dialog>
         <button id="project-button">
             <img src="https://cdn-icons-png.flaticon.com/128/4505/4505742.png" alt="">
             Add Project
         </button>
+        <dialog projectModal id="project-modal">
+            <form method="dialog" id="project-modal-form">
+                <label for="project-form">Project Name</label>
+                <input type="text" id="project-name-input">
+                <button type="submit" id="project-form-submit">Submit</button>
+            </form>
+        </dialog>
     </div>
     <div class="content">
         <div class="title">Project Name</div>
@@ -47,6 +45,15 @@
                 <p>12/12/12</p>
             </div>
         </div>
+        <dialog todoModal id="todo-modal">
+            <form method="dialog" id="todo-modal-form">
+                <label for="todo-name">Todo name</label>
+                <input type="text" id="todo-name">
+                <label for="todo-name">End date</label>
+                <input type="date" id="todo-date">
+                <button type="submit" id="todo-form-submit">Submit</button>
+            </form>
+        </dialog>
         <button id="todo-button">
             <img src="https://cdn-icons-png.flaticon.com/128/4505/4505742.png" alt="">
             Add Task

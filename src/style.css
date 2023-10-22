@@ -37,6 +37,7 @@ body {
 }
 
 .sidebar {
+  position: relative;
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
@@ -130,4 +131,33 @@ body {
 
 #todo-button:hover, #project-button:hover, .todo-item:hover {
   background-color: var(--accent);
+}
+
+#project-modal-form, #todo-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+#project-modal-form button, #todo-modal-form button {
+  padding: 10px 20px;
+  background-color: var(--background);
+  color: var(--text);
+  border-radius: 20%;
+}
+#project-modal-form input, #todo-modal-form input {
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+#project-modal, #todo-modal {
+  background-color: var(--secondary);
+  color: var(--text);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5%;
+  border: 1px solid var(--accent);
 }/*# sourceMappingURL=style.css.map */
