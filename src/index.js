@@ -17,7 +17,6 @@ projectForm.addEventListener('submit', function() {
   let project = new Project(inputForm.value);
   display.projectList.push(project);
   display.renderProjects();
-
   // Clear form
   inputForm.value = "";
 })
@@ -62,22 +61,22 @@ todoModal.addEventListener("click", e => {
 
 todoForm.addEventListener('submit', function(e) {
   // Get form value
-  let inputForm = document.getElementById("todo-name");
-
+  let todoName = document.getElementById("todo-name");
+  
+  // Access the selected project
+  let project = display.projectList[TodoDisplayController.currentIndex];
+  project.addTodo("fortnite");
   // Update project display
-  let project = new Project(inputForm.value);
-  display.projectList.push(project);
-  display.renderProjects();
+
 
   // Clear form
-  inputForm.value = "";
 })
 
 // Debug code
-// let Project1 = new Project("joe");
-// let Project2 = new Project("EOE");
-// display.projectList = [Project1, Project2]
-// display.renderProjects();
+let Project1 = new Project("joe");
+let Project2 = new Project("EOE");
+display.projectList = [Project1, Project2]
+display.renderProjects();
 
 // Project1.addTodo("fornite", "6/9")
 // Project1.addTodo("fornite", "6/9")
