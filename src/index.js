@@ -63,9 +63,10 @@ todoForm.addEventListener('submit', function(e) {
   // Get form value
   let todoName = document.getElementById("todo-name");
   let todoDate = document.getElementById("todo-date");
+  let todoPriority = document.getElementById("todo-priority");
   // Access the selected project
   let project = display.projectList[TodoDisplayController.currentIndex];
-  project.addTodo(todoName.value, todoDate.value);
+  project.addTodo(todoName.value, todoDate.value, todoPriority.value);
 
   // Render new todo list
   TodoDisplayController.renderTodos(project);
@@ -74,10 +75,12 @@ todoForm.addEventListener('submit', function(e) {
   // Clear form
   todoName.value = "";
   todoDate.value = "";
+  todoPriority.value = "";
 })
 
 // Debug code
-let Project1 = new Project("joe");
-let Project2 = new Project("EOE");
-display.projectList = [Project1, Project2]
-display.renderProjects();
+// let Project1 = new Project("joe");
+// Project1.addTodo("joe", "1999", "high");
+// let Project2 = new Project("EOE");
+// display.projectList = [Project1, Project2]
+// display.renderProjects();

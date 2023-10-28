@@ -60,6 +60,17 @@ export class TodoDisplayController {
             todoDate.innerHTML = todo.dueDate;
             todoItem.appendChild(todoDate);
 
+            switch (todo.priority) {
+                case "high":
+                    todoItem.style.borderLeft = "thick solid #CC0000";
+                    break;
+                case "medium":
+                    todoItem.style.borderLeft = "thick solid #EED202";
+                    break;
+                case "low":
+                    todoItem.style.borderLeft = "thick solid #5AA27C";
+                    break;
+            }
             document.getElementsByClassName('todo-list')[0].appendChild(todoItem);
         });
     }
@@ -72,11 +83,11 @@ export class Project {
         this.title = title;
     }
 
-    addTodo(title, date) {
+    addTodo(title, date, priority) {
         let todo = new TodoItem()
         todo.title = title;
         todo.dueDate = date;
-
+        todo.priority = priority;
         this.todoList.push(todo);
     }
 }

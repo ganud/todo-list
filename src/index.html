@@ -16,9 +16,9 @@
             <div class="menu-item menu-header">Inbox</div>
         </div>
         <div class="menu-group" id="project-group">
-            <div class="menu-header">Projects</div>
+            <!-- <div class="menu-header">Projects</div>
             <div class="menu-item selected">Project1</div>
-            <div class="menu-item">Project2</div>
+            <div class="menu-item">Project2</div> -->
         </div>
         <button id="project-button">
             <img src="https://cdn-icons-png.flaticon.com/128/4505/4505742.png" alt="">
@@ -27,31 +27,38 @@
         <dialog projectModal id="project-modal">
             <form method="dialog" id="project-modal-form">
                 <label for="project-form">Project Name</label>
-                <input type="text" id="project-name-input">
+                <input type="text" id="project-name-input" required>
                 <button type="submit" id="project-form-submit">Submit</button>
             </form>
         </dialog>
     </div>
     <div class="content">
-        <div class="title">Project Name</div>
+        <div class="title"></div>
         <div class="todo-list">
-            <div class="todo-item">
+            <!-- <div class="todo-item">
                 <div class="unchecked"></div>
                 Todo 1
             </div>
-            <div class="todo-item">
+            <div class="todo-item"> -->
                 <!-- <div class="unchecked"></div> -->
-                <p>Todo 1</p>
+                <!-- <p>Todo 1</p>
                 <p>12/12/12</p>
-            </div>
+            </div> -->
         </div>
         <dialog todoModal id="todo-modal">
             <form method="dialog" id="todo-modal-form">
                 <label for="todo-name">Todo name</label>
-                <input type="text" id="todo-name">
+                <input type="text" id="todo-name" required>
                 <label for="todo-date">End date</label>
-                <input type="date" id="todo-date">
+                <input type="date" id="todo-date" required pattern="^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\d\d$">
+                <label for="todo-priority">Priority</label>
+                <select name="" id="todo-priority" required>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
                 <button type="submit" id="todo-form-submit">Submit</button>
+                
             </form>
         </dialog>
         <button id="todo-button">
