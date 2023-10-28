@@ -11,14 +11,14 @@ const projectModal = document.querySelector("[projectModal]");
 
 projectForm.addEventListener('submit', function() {
   // Get form value
-  let inputForm = document.getElementById("project-name-input");
+  let projectName = document.getElementById("project-name-input");
 
   // Update project display
-  let project = new Project(inputForm.value);
+  let project = new Project(projectName.value);
   display.projectList.push(project);
   display.renderProjects();
   // Clear form
-  inputForm.value = "";
+  projectName.value = "";
 })
 
 projectButtonOpen.addEventListener('click', function() {
@@ -62,14 +62,18 @@ todoModal.addEventListener("click", e => {
 todoForm.addEventListener('submit', function(e) {
   // Get form value
   let todoName = document.getElementById("todo-name");
-  
+  let todoDate = document.getElementById("todo-date");
   // Access the selected project
   let project = display.projectList[TodoDisplayController.currentIndex];
-  project.addTodo("fortnite");
-  // Update project display
+  project.addTodo(todoName.value, todoDate.value);
+
+  // Render new todo list
+  TodoDisplayController.renderTodos(project);
 
 
   // Clear form
+  todoName.value = "";
+  todoDate.value = "";
 })
 
 // Debug code
@@ -77,6 +81,3 @@ let Project1 = new Project("joe");
 let Project2 = new Project("EOE");
 display.projectList = [Project1, Project2]
 display.renderProjects();
-
-// Project1.addTodo("fornite", "6/9")
-// Project1.addTodo("fornite", "6/9")
