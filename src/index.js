@@ -86,26 +86,33 @@ todoForm.addEventListener('submit', function(e) {
 
 // Main code on page load
 
-// Loads localstorage if present
+
 let localprojectList = localStorage.getItem('localprojectList');
 localprojectList = JSON.parse(localprojectList);
 
-localprojectList.forEach(project => {
-  // Reimplements functions in Project, code duplicated from todos.js
-  project.addTodo = function(title, date, priority) {
-    let todo = new TodoItem()
-    todo.title = title;
-    todo.dueDate = date;
-    todo.priority = priority;
-    this.todoList.push(todo);
-  }
-  project.deleteTodo = function(index) {
-    this.todoList.splice(index,1);
-  }
-});
+// Loads localstorage if present
+if (localStorage.getItem("localprojectList") === null) {
+  let Project1 = new Project("Main");
+  Project1.addTodo("Welcome to VaporTodo!", "1999", "low");
+  display.projectList = [Project1];
+}
+else {
+  localprojectList.forEach(project => {
+    // Reimplements functions in Project, code duplicated from todos.js
+    project.addTodo = function(title, date, priority) {
+      let todo = new TodoItem()
+      todo.title = title;
+      todo.dueDate = date;
+      todo.priority = priority;
+      this.todoList.push(todo);
+    }
+    project.deleteTodo = function(index) {
+      this.todoList.splice(index,1);
+    }
+  });
 
-let Project1 = new Project("Project");
-Project1.addTodo("joe", "1999", "high");
+  display.projectList = localprojectList;
 
-display.projectList = localprojectList;
+}
+
 display.renderProjects();
