@@ -176,4 +176,13 @@ select {
   border: 1px solid var(--accent);
   border-radius: 3px;
   padding: 0 0 0 0.5em;
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.icon-group img {
+  max-width: 2rem;
 }/*# sourceMappingURL=style.css.map */

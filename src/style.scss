@@ -190,3 +190,11 @@ select {
 
 }
 
+.icon-group {
+    display: flex;
+    gap: 10px;
+    img {
+        max-width: 2rem;
+    }
+    align-items: center;
+}

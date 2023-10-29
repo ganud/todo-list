@@ -79,8 +79,8 @@ todoForm.addEventListener('submit', function(e) {
 })
 
 // Debug code
-// let Project1 = new Project("joe");
-// Project1.addTodo("joe", "1999", "high");
+let Project1 = new Project("Project");
+Project1.addTodo("joe", "1999", "high");
 // let Project2 = new Project("EOE");
-// display.projectList = [Project1, Project2]
-// display.renderProjects();
+display.projectList = [Project1]
+display.renderProjects();

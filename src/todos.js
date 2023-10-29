@@ -48,18 +48,35 @@ export class TodoDisplayController {
         TodoDisplayController.clearTodos();
         let titleElement = document.getElementsByClassName('title')[0];
         titleElement.innerHTML = project.title;
-        project.todoList.forEach(todo => {
+        project.todoList.forEach(function (todo, index) {
+            // Create dom elements from TodoItem properties 
             let todoItem = document.createElement('div');
             todoItem.className = 'todo-item';
 
+            let iconGroup = document.createElement('div');
+            iconGroup.className = 'icon-group';
+            
             let todoName = document.createElement('p')
             todoName.innerHTML = todo.title;
             todoItem.appendChild(todoName);
 
             let todoDate = document.createElement('p')
             todoDate.innerHTML = todo.dueDate;
-            todoItem.appendChild(todoDate);
+            iconGroup.appendChild(todoDate);
 
+            let deleteButton = document.createElement('img');
+            deleteButton.src = "https://cdn-icons-png.flaticon.com/128/9713/9713380.png";
+            deleteButton.setAttribute('value', index);
+            deleteButton.addEventListener('click', function(e) {
+                let todoIndex = e.target.getAttribute('value')
+                project.deleteTodo(todoIndex);
+                TodoDisplayController.renderTodos(project);
+            })
+            iconGroup.appendChild(deleteButton);
+
+            todoItem.appendChild(iconGroup);
+
+            // Assign color tags to the Todo DOM item according to priority value
             switch (todo.priority) {
                 case "high":
                     todoItem.style.borderLeft = "thick solid #CC0000";
@@ -71,6 +88,10 @@ export class TodoDisplayController {
                     todoItem.style.borderLeft = "thick solid #5AA27C";
                     break;
             }
+
+            // Assign a index which can be accessed when deleting items.
+            todoItem.setAttribute('value', index);
+
             document.getElementsByClassName('todo-list')[0].appendChild(todoItem);
         });
     }
@@ -89,6 +110,16 @@ export class Project {
         todo.dueDate = date;
         todo.priority = priority;
         this.todoList.push(todo);
+    }
+
+    deleteTodo(index) {
+        this.todoList.splice(index,1);
+    }
+
+    // When editing a todo, open up the todo creation form.
+    // Replace the todo with the new todo in the same index.
+    editTodo() {
+
     }
 }
 
