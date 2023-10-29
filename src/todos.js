@@ -17,11 +17,6 @@ export class TodoDisplayController {
         document.getElementsByClassName('todo-list')[0].innerHTML = "";
     }
 
-    addNewProject(projectName) {
-        let project = new Project(projectName);
-        this.projectList.push(project);
-    }
-
     renderProjects() {
         let projectGroup = document.getElementById('project-group');
         let projectList = this.projectList;
@@ -125,5 +120,6 @@ export class Project {
 
 export default {
     TodoDisplayController,
-    Project
+    Project,
+    TodoItem,
 }

@@ -1,6 +1,6 @@
 import './style.css';
 import _ from 'lodash';
-import {TodoDisplayController, Project} from "./todos.js";
+import {TodoDisplayController, Project, TodoItem} from "./todos.js";
 
 let display = new TodoDisplayController();
 
@@ -17,6 +17,10 @@ projectForm.addEventListener('submit', function() {
   let project = new Project(projectName.value);
   display.projectList.push(project);
   display.renderProjects();
+
+  // Update localstorage
+  localStorage.setItem("localprojectList", JSON.stringify(display.projectList));
+
   // Clear form
   projectName.value = "";
 })
@@ -66,8 +70,9 @@ todoForm.addEventListener('submit', function(e) {
   let todoPriority = document.getElementById("todo-priority");
   // Access the selected project
   let project = display.projectList[TodoDisplayController.currentIndex];
+  // Add new todo and update localstorage
   project.addTodo(todoName.value, todoDate.value, todoPriority.value);
-
+  localStorage.setItem("localprojectList", JSON.stringify(display.projectList));
   // Render new todo list
   TodoDisplayController.renderTodos(project);
 
@@ -78,9 +83,29 @@ todoForm.addEventListener('submit', function(e) {
   todoPriority.value = "";
 })
 
-// Debug code
+
+// Main code on page load
+
+// Loads localstorage if present
+let localprojectList = localStorage.getItem('localprojectList');
+localprojectList = JSON.parse(localprojectList);
+
+localprojectList.forEach(project => {
+  // Reimplements functions in Project, code duplicated from todos.js
+  project.addTodo = function(title, date, priority) {
+    let todo = new TodoItem()
+    todo.title = title;
+    todo.dueDate = date;
+    todo.priority = priority;
+    this.todoList.push(todo);
+  }
+  project.deleteTodo = function(index) {
+    this.todoList.splice(index,1);
+  }
+});
+
 let Project1 = new Project("Project");
 Project1.addTodo("joe", "1999", "high");
-// let Project2 = new Project("EOE");
-display.projectList = [Project1]
+
+display.projectList = localprojectList;
 display.renderProjects();
