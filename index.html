@@ -7,6 +7,67 @@
     <title>Todo List</title>
 <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
 <body>
-    Hi there
+    <div class="header">
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6867bddd-33d5-4cf2-940b-f8620866dcdf/de5v2ve-dcb58a4f-7ac4-4b44-94c6-bcc5282c5d32.png/v1/fill/w_892,h_896/opera_gx_circle_icon_by_tombreaver_de5v2ve-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE5OSIsInBhdGgiOiJcL2ZcLzY4NjdiZGRkLTMzZDUtNGNmMi05NDBiLWY4NjIwODY2ZGNkZlwvZGU1djJ2ZS1kY2I1OGE0Zi03YWM0LTRiNDQtOTRjNi1iY2M1MjgyYzVkMzIucG5nIiwid2lkdGgiOiI8PTExOTMifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.9yzEMQ554-xb6TGmqM1r1nj2whaCLtUvmcO6euo4kaA" alt="">
+        <p>VaporTodo</p>
+    </div>
+    <div class="sidebar">
+        <div class="menu-group">
+            <div class="menu-item menu-header">Inbox</div>
+        </div>
+        <div class="menu-group" id="project-group">
+            <!-- <div class="menu-header">Projects</div>
+            <div class="menu-item selected">Project1</div>
+            <div class="menu-item">Project2</div> -->
+        </div>
+        <button id="project-button">
+            <img src="https://cdn-icons-png.flaticon.com/128/4505/4505742.png" alt="">
+            Add Project
+        </button>
+        <dialog projectModal id="project-modal">
+            <form method="dialog" id="project-modal-form">
+                <label for="project-form">Project Name</label>
+                <input type="text" id="project-name-input" required>
+                <button type="submit" id="project-form-submit">Submit</button>
+            </form>
+        </dialog>
+    </div>
+    <div class="content">
+        <div class="title">Nothing Selected...</div>
+        <div class="todo-list">
+            <!-- <div class="todo-item">
+                <div class="unchecked"></div>
+                Todo 1
+            </div> -->
+            <!-- <div class="todo-item">
+                <p>Todo 1</p>
+                <div class="icon-group">
+                    <p>12/12/12</p>
+                    <img src="https://cdn-icons-png.flaticon.com/128/9713/9713380.png" alt="">
+                </div>
+            </div> -->
+        </div>
+        <dialog todoModal id="todo-modal">
+            <form method="dialog" id="todo-modal-form">
+                <label for="todo-name">Todo name</label>
+                <input type="text" id="todo-name" required>
+                <label for="todo-date">End date</label>
+                <input type="date" id="todo-date" required pattern="^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\d\d$">
+                <label for="todo-priority">Priority</label>
+                <select name="" id="todo-priority" required>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+                <button type="submit" id="todo-form-submit">Submit</button>
+                
+            </form>
+        </dialog>
+        <button id="todo-button">
+            <img src="https://cdn-icons-png.flaticon.com/128/4505/4505742.png" alt="">
+            Add Task
+        </button>
+    </div>
+    <div class="footer">Site by ganud</div>
 </body>
 </html>
